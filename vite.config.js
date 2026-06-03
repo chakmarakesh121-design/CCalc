@@ -14,7 +14,9 @@ export default defineConfig({
         labour: resolve(__dirname, 'labour.html'),
         hvac: resolve(__dirname, 'hvac.html'),
         roofing: resolve(__dirname, 'roofing.html'),
-        flooring: resolve(__dirname, 'flooring.html')
+        flooring: resolve(__dirname, 'flooring.html'),
+        contact: resolve(__dirname, 'contact.html'),
+        privacy: resolve(__dirname, 'privacy.html')
       }
     }
   },
