@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bricks Calculator | ContractorsCalc</title>
+  <meta name="description" content="Estimate brick quantities and mortar allowance for walls and masonry work." />
+  <link rel="canonical" href="https://www.contractorscalc.in/bricks.html" />
+  <link rel="icon" href="/assets/logo-DdbL8Vsg.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/app-tiBnzFut.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/app-B7FBh_wz.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img src="data:image/svg+xml,%3csvg%20width='256'%20height='256'%20viewBox='0%200%20256%20256'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cdefs%3e%3clinearGradient%20id='grad'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3e%3cstop%20offset='0%25'%20stop-color='%230f172a'%20/%3e%3cstop%20offset='100%25'%20stop-color='%231d4ed8'%20/%3e%3c/linearGradient%3e%3c/defs%3e%3crect%20width='256'%20height='256'%20rx='48'%20fill='url(%23grad)'%20/%3e%3cpath%20d='M78%2084C78%2075.1634%2085.1634%2068%2094%2068H132C140.837%2068%20148%2075.1634%20148%2084V172C148%20180.837%20140.837%20188%20132%20188H94C85.1634%20188%2078%20180.837%2078%20172V84Z'%20fill='%23FBBF24'%20/%3e%3cpath%20d='M108%2084C108%2075.1634%20115.163%2068%20124%2068H162C170.837%2068%20178%2075.1634%20178%2084V172C178%20180.837%20170.837%20188%20162%20188H124C115.163%20188%20108%20180.837%20108%20172V84Z'%20fill='%23fff'%20opacity='0.9'%20/%3e%3cpath%20d='M86%20104H132V152H86V104Z'%20fill='%230f172a'%20/%3e%3cpath%20d='M124%20104H170V152H124V104Z'%20fill='%230f172a'%20opacity='0.8'%20/%3e%3c/svg%3e" alt="ContractorsCalc logo" />
+        <span>ContractorsCalc</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#about">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </header>
+
+
+    <section class="hero-section hero-premium">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Dedicated calculator page</p>
+          <h1>Bricks Calculator | ContractorsCalc</h1>
+          <p class="hero-copy">Estimate brick quantities and mortar allowance for walls and masonry work.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="/bricks.html#calculator-panel">Open Calculator</a>
+            <a class="button button-secondary" href="/">Explore other calculators</a>
+          </div>
+        </div>
+        <div class="hero-cards">
+          <article class="feature-card">
+            <h3>Fast estimates</h3>
+            <p>Quick results for contractors and home projects.</p>
+          </article>
+          <article class="feature-card">
+            <h3>SEO landing page</h3>
+            <p>Optimized page with unique metadata and canonical URL.</p>
+          </article>
+          <article class="feature-card">
+            <h3>AI assistance</h3>
+            <p>Ask the ContractorsCalc AI bot for help with using the tool.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  <main>
+    <div class="container">
+          <section class="calculator-panel active" id="calculator-panel">
+            <h3>Bricks Calculator</h3>
+            <p>Quickly estimate brick quantity and mortar volume for walls or structures.</p>
+            <div class="calculator-grid">
+              <label>Wall Length (m)
+                <input type="number" id="bricks-length" min="0" step="0.1" value="8" />
+              </label>
+              <label>Wall Height (m)
+                <input type="number" id="bricks-height" min="0" step="0.1" value="3" />
+              </label>
+              <label>Brick Size (mm)
+                <input type="number" id="brick-size" min="0" step="1" value="190" />
+              </label>
+              <label>Mortar Allowance (%)
+                <input type="number" id="brick-allowance" min="0" step="1" value="10" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateBricks()">Calculate</button>
+            <div class="result-box" id="bricks-result"></div>
+          </section>
+    </div>
+  </main>
+<section class="section section-info">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">AI assistance</span>
+          <h2>Ask the ContractorsCalc AI Bot</h2>
+          <p>Use the chat assistant to get help planning material, labour, and construction estimates.</p>
+        </div>
+        <div class="chat-panel">
+          <div id="chat-log" class="chat-log">
+            <div class="chat-message bot-message">Ask about cement, concrete, bricks, paint, tiles, labour, HVAC, roofing, or flooring.</div>
+          </div>
+          <div class="chat-actions">
+            <input id="chat-input" type="text" placeholder="Ask your construction question..." />
+            <button class="button button-primary" onclick="sendChat()">Send</button>
+          </div>
+          <div class="bot-note">Tip: This AI chat works with the backend API on Vercel or local Node.</div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-secondary">
+      <div class="container">
+        <h2>More calculators</h2>
+        <div class="calculator-tabs">
+          <a class="button button-secondary" href="/cement.html">Cement</a>
+          <a class="button button-secondary" href="/concrete.html">Concrete</a>
+          <a class="button button-secondary" href="/bricks.html">Bricks</a>
+          <a class="button button-secondary" href="/paint.html">Paint</a>
+          <a class="button button-secondary" href="/tiles.html">Tiles</a>
+          <a class="button button-secondary" href="/labour.html">Labour</a>
+          <a class="button button-secondary" href="/hvac.html">HVAC</a>
+          <a class="button button-secondary" href="/roofing.html">Roofing</a>
+          <a class="button button-secondary" href="/flooring.html">Flooring</a>
+        </div>
+      </div>
+    </section>
+        <section class="section section-cta">
+      <div class="container cta-panel">
+        <div>
+          <span class="eyebrow">Premium workflow</span>
+          <h2>Ready to bring premium estimating to your projects?</h2>
+          <p>ContractorsCalc combines accurate calculator outputs with a polished interface designed for professional teams and faster decisions.</p>
+        </div>
+        <a class="button button-primary button-large" href="#calculators">Start a calculation</a>
+      </div>
+    </section>
+<footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 ContractorsCalc. Professional construction estimating tools.</p>
+      <nav class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#about">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
