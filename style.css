@@ -129,27 +129,27 @@ body::before {
 }
 
 .hero-section {
-  padding: 6rem 0 4rem;
+  padding: 3rem 0 1.5rem;
 }
 
 .hero-premium {
   background: rgba(26, 38, 58, 0.94);
   border: 1px solid rgba(251, 191, 36, 0.18);
-  box-shadow: 0 40px 90px rgba(16, 18, 35, 0.32);
-  border-radius: 2.5rem;
-  padding: 3rem;
+  box-shadow: 0 32px 70px rgba(16, 18, 35, 0.28);
+  border-radius: 2rem;
+  padding: 1.8rem;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.7fr 0.8fr;
-  gap: 2.2rem;
+  gap: 1.4rem;
   align-items: center;
 }
 
 .hero-copy-block {
   display: grid;
-  gap: 1.4rem;
+  gap: 1rem;
   width: 100%;
   max-width: 100%;
 }
@@ -158,28 +158,20 @@ body::before {
 .section-header h2 {
   margin: 0;
   color: var(--text);
-  font-size: clamp(2.6rem, 2vw + 1.7rem, 4.2rem);
-  line-height: 1.02;
+  font-size: clamp(2rem, 2vw + 1.2rem, 3.2rem);
+  line-height: 1.08;
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.24em;
   color: var(--accent);
-}
-
-.hero-section h1,
-.section-header h2 {
-  margin: 0;
-  color: var(--text);
-  font-size: clamp(2.6rem, 2vw + 1.7rem, 3.8rem);
-  line-height: 1.02;
 }
 
 .hero-copy,
@@ -195,7 +187,7 @@ body::before {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .hero-stat-grid {
