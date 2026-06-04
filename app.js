@@ -371,6 +371,26 @@ function generateBotResponse(text) {
   return 'I can help with cement, concrete, bricks, paint, tiles, labour, HVAC, roofing, flooring, asphalt, drywall, deck, gravel, fence, paver, square footage, and Loan EMI estimates. What would you like to calculate?';
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+});
+
 window.onload = () => {
   if (elementExists('cement-length')) calculateCement();
   if (elementExists('concrete-length')) calculateConcrete();
