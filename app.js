@@ -264,6 +264,28 @@ function calculatePaver() {
   document.getElementById('paver-result').innerHTML = `Paver area: ${round(area)} m²<br>Pavers needed: ${count}`;
 }
 
+window.calculateCement = calculateCement;
+window.calculateConcrete = calculateConcrete;
+window.calculateBricks = calculateBricks;
+window.calculatePaint = calculatePaint;
+window.calculateTiles = calculateTiles;
+window.calculateLabour = calculateLabour;
+window.calculateHVAC = calculateHVAC;
+window.calculateRoofing = calculateRoofing;
+window.calculateFlooring = calculateFlooring;
+window.calculateLoanEMI = calculateLoanEMI;
+window.calculateAIEstimate = calculateAIEstimate;
+window.uploadBlueprint = uploadBlueprint;
+window.calculateAsphalt = calculateAsphalt;
+window.calculateDrywall = calculateDrywall;
+window.calculateDeck = calculateDeck;
+window.calculateGravel = calculateGravel;
+window.calculateSquareFootage = calculateSquareFootage;
+window.calculateRebar = calculateRebar;
+window.calculateFence = calculateFence;
+window.calculatePaver = calculatePaver;
+window.sendChat = sendChat;
+
 function appendChat(message, fromUser = false) {
   const node = document.createElement('div');
   node.className = `chat-message ${fromUser ? 'user-message' : 'bot-message'}`;
