@@ -388,6 +388,15 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.setAttribute('aria-expanded', 'false');
       });
     });
+
+    document.querySelectorAll('.dropdown-menu a').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const href = link.getAttribute('href');
+        if (href) {
+          window.location.href = href;
+        }
+      });
+    });
   }
 });
 
