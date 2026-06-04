@@ -22,11 +22,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  min-width: 320px;
   background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.18), transparent 22%),
               linear-gradient(180deg, #111822 0%, #151e34 40%, #0b1220 100%);
   color: var(--text);
@@ -49,6 +51,8 @@ button, input, select, textarea {
 
 button {
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(255,255,255,0.08);
 }
 
 body::before {
@@ -61,8 +65,10 @@ body::before {
 }
 
 .container {
-  width: min(1180px, calc(100% - 2rem));
+  width: min(1180px, 100%);
+  max-width: 1180px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .site-header {
@@ -310,6 +316,8 @@ body::before {
   gap: 0.5rem;
   color: var(--text);
   font-weight: 600;
+  min-width: 0;
+  word-break: break-word;
 }
 
 input, select {
@@ -339,6 +347,13 @@ button.button {
 
 .button:hover {
   transform: translateY(-1px);
+}
+
+button,
+input,
+select,
+textarea {
+  min-width: 0;
 }
 
 .button-primary {
@@ -540,5 +555,48 @@ button.button {
   .info-cards article,
   .feature-panel {
     border-radius: 1.25rem;
+  }
+
+  .calculator-tabs {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .tab-button {
+    width: 100%;
+    min-height: 3.2rem;
+    padding: 0.9rem 0.95rem;
+  }
+
+  .calculator-panel {
+    padding: 1.5rem;
+  }
+
+  .calculator-grid {
+    gap: 0.9rem;
+  }
+
+  .calculator-grid label {
+    font-size: 0.97rem;
+  }
+
+  input,
+  select {
+    font-size: 1rem;
+    min-height: 3.4rem;
+    padding: 1rem 1rem;
+  }
+
+  button.button {
+    width: 100%;
+    padding: 1rem 1rem;
+  }
+
+  .chat-actions {
+    flex-direction: column;
+  }
+
+  .chat-actions input {
+    width: 100%;
   }
 }
