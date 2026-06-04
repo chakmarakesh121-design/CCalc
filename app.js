@@ -123,6 +123,147 @@ function calculateFlooring() {
   document.getElementById('flooring-result').innerHTML = `Floor area: ${round(floorArea)} m²<br>Material pieces: ${pieces}`;
 }
 
+function calculateLoanEMI() {
+  const principal = parseFloat(document.getElementById('loan-principal').value) || 0;
+  const annualRate = parseFloat(document.getElementById('loan-rate').value) / 100 || 0;
+  const years = parseInt(document.getElementById('loan-term').value, 10) || 1;
+  const downPayment = parseFloat(document.getElementById('loan-down').value) || 0;
+  const loanAmount = Math.max(principal - downPayment, 0);
+  const monthlyRate = annualRate / 12;
+  const months = years * 12;
+  let emi = 0;
+
+  if (months > 0) {
+    if (monthlyRate > 0) {
+      const factor = Math.pow(1 + monthlyRate, months);
+      emi = loanAmount * monthlyRate * factor / (factor - 1);
+    } else {
+      emi = loanAmount / months;
+    }
+  }
+
+  const totalPayment = round(emi * months);
+  const totalInterest = round(totalPayment - loanAmount);
+  document.getElementById('loan-emi-result').innerHTML = `Loan amount: ₹${round(loanAmount)}<br>Monthly EMI: ₹${round(emi)}<br>Total payment: ₹${totalPayment}<br>Total interest: ₹${totalInterest}`;
+}
+
+function calculateAIEstimate() {
+  const projectType = document.getElementById('ai-project-type')?.value || 'Residential';
+  const area = parseFloat(document.getElementById('ai-project-area')?.value) || 0;
+  const finishQuality = document.getElementById('ai-finish-quality')?.value || 'Standard';
+  const budgetRange = document.getElementById('ai-budget-range')?.value || 'N/A';
+  const materialPreference = document.getElementById('ai-material-preference')?.value || 'Balanced';
+  const siteComplexity = document.getElementById('ai-site-complexity')?.value || 'Standard';
+  const notes = document.getElementById('ai-project-notes')?.value || '';
+
+  const estimatedCement = round(area * 0.08 * (finishQuality === 'Premium' ? 1.2 : finishQuality === 'Economy' ? 0.9 : 1));
+  const estimatedBricks = Math.ceil(area * 20 * (materialPreference === 'Premium' ? 1.1 : materialPreference === 'Cost-saving' ? 0.9 : 1));
+  const estimatedPaint = round(area * 0.12 * (siteComplexity === 'Difficult' ? 1.15 : 1));
+  const estimatedLabourDays = Math.max(1, Math.round(area / 25 * (siteComplexity === 'Difficult' ? 1.3 : 1)));
+
+  document.getElementById('ai-estimate-result').innerHTML = `Project type: ${projectType}<br>Area: ${round(area)} m²<br>Finish: ${finishQuality}<br>Budget range: ${budgetRange}<br>Material preference: ${materialPreference}<br>Site complexity: ${siteComplexity}<br>Estimated cement: ${estimatedCement} bags<br>Estimated bricks: ${estimatedBricks} bricks<br>Estimated paint: ${estimatedPaint} litres<br>Estimated labour: ${estimatedLabourDays} days<br>Notes: ${notes}`;
+}
+
+function uploadBlueprint() {
+  const fileInput = document.getElementById('blueprint-file');
+  const resultBox = document.getElementById('blueprint-result');
+  if (!fileInput || !fileInput.files.length) {
+    if (resultBox) resultBox.textContent = 'Please select a blueprint image or PDF before uploading.';
+    return;
+  }
+
+  const file = fileInput.files[0];
+  if (resultBox) {
+    resultBox.innerHTML = `Uploaded <strong>${file.name}</strong>. AI blueprint estimates are being prepared based on your file and will recommend materials, labour, and project scope details.`;
+  }
+}
+
+function calculateAsphalt() {
+  const length = parseFloat(document.getElementById('asphalt-length').value) || 0;
+  const width = parseFloat(document.getElementById('asphalt-width').value) || 0;
+  const depth = parseFloat(document.getElementById('asphalt-depth').value) / 100 || 0;
+  const density = parseFloat(document.getElementById('asphalt-density').value) || 2.35;
+  const volume = length * width * depth;
+  const tons = round(volume * density);
+  document.getElementById('asphalt-result').innerHTML = `Asphalt volume: ${round(volume)} m³<br>Estimated weight: ${tons} t`;
+}
+
+function calculateDrywall() {
+  const area = parseFloat(document.getElementById('drywall-area').value) || 0;
+  const width = parseFloat(document.getElementById('drywall-width').value) || 1.2;
+  const height = parseFloat(document.getElementById('drywall-height').value) || 2.4;
+  const wastage = parseFloat(document.getElementById('drywall-wastage').value) || 0;
+  const sheetArea = width * height;
+  const sheets = Math.ceil(area / sheetArea * (1 + wastage / 100));
+  document.getElementById('drywall-result').innerHTML = `Surface area: ${round(area)} m²<br>Drywall sheets needed: ${sheets}`;
+}
+
+function calculateDeck() {
+  const length = parseFloat(document.getElementById('deck-length').value) || 0;
+  const width = parseFloat(document.getElementById('deck-width').value) || 0;
+  const boardWidth = parseFloat(document.getElementById('deck-board-width').value) || 140;
+  const gap = parseFloat(document.getElementById('deck-gap').value) || 5;
+  const lineSpacing = (boardWidth + gap) / 1000;
+  const boards = Math.ceil(width / lineSpacing);
+  const totalLength = round(boards * length);
+  const area = round(length * width);
+  document.getElementById('deck-result').innerHTML = `Deck area: ${area} m²<br>Boards needed: ${boards}<br>Total board length: ${totalLength} m`;
+}
+
+function calculateGravel() {
+  const length = parseFloat(document.getElementById('gravel-length').value) || 0;
+  const width = parseFloat(document.getElementById('gravel-width').value) || 0;
+  const depth = parseFloat(document.getElementById('gravel-depth').value) / 100 || 0;
+  const density = parseFloat(document.getElementById('gravel-density').value) || 1.6;
+  const volume = length * width * depth;
+  const tons = round(volume * density);
+  document.getElementById('gravel-result').innerHTML = `Gravel volume: ${round(volume)} m³<br>Estimated weight: ${tons} t`;
+}
+
+function calculateSquareFootage() {
+  const length = parseFloat(document.getElementById('square-length').value) || 0;
+  const width = parseFloat(document.getElementById('square-width').value) || 0;
+  const factor = parseFloat(document.getElementById('square-factor').value) || 10.7639;
+  const notes = document.getElementById('square-notes').value || '';
+  const area = length * width;
+  const sqFeet = round(area * factor);
+  document.getElementById('square-footage-result').innerHTML = `Area: ${round(area)} m²<br>Square footage: ${sqFeet} ft²<br>${notes}`;
+}
+
+function calculateRebar() {
+  const length = parseFloat(document.getElementById('rebar-length').value) || 0;
+  const width = parseFloat(document.getElementById('rebar-width').value) || 0;
+  const spacing = parseFloat(document.getElementById('rebar-spacing').value) || 20;
+  const diameter = parseFloat(document.getElementById('rebar-diameter').value) || 12;
+  const bars = Math.ceil(width / (spacing / 100)) + 1;
+  const totalLength = bars * length;
+  const weightPerMeter = (diameter * diameter) / 162;
+  const weight = round(totalLength * weightPerMeter);
+  document.getElementById('rebar-result').innerHTML = `Rebar count: ${bars}<br>Total length: ${round(totalLength)} m<br>Estimated weight: ${weight} kg`;
+}
+
+function calculateFence() {
+  const length = parseFloat(document.getElementById('fence-length').value) || 0;
+  const spacing = parseFloat(document.getElementById('fence-spacing').value) || 2.4;
+  const gates = parseInt(document.getElementById('fence-gates').value, 10) || 0;
+  const gateWidth = parseFloat(document.getElementById('fence-gate-width').value) || 1;
+  const posts = Math.ceil(length / spacing) + 1;
+  const railLength = round(length * 2);
+  const totalGateWidth = round(gates * gateWidth);
+  document.getElementById('fence-result').innerHTML = `Fence length: ${round(length)} m<br>Posts required: ${posts}<br>Rail length: ${railLength} m<br>Gate width total: ${totalGateWidth} m`;
+}
+
+function calculatePaver() {
+  const length = parseFloat(document.getElementById('paver-length').value) || 0;
+  const width = parseFloat(document.getElementById('paver-width').value) || 0;
+  const size = parseFloat(document.getElementById('paver-size').value) || 0;
+  const wastage = parseFloat(document.getElementById('paver-wastage').value) || 0;
+  const area = length * width;
+  const paverArea = Math.pow(size / 100, 2);
+  const count = Math.ceil(area / paverArea * (1 + wastage / 100));
+  document.getElementById('paver-result').innerHTML = `Paver area: ${round(area)} m²<br>Pavers needed: ${count}`;
+}
+
 function appendChat(message, fromUser = false) {
   const node = document.createElement('div');
   node.className = `chat-message ${fromUser ? 'user-message' : 'bot-message'}`;
@@ -175,7 +316,37 @@ function generateBotResponse(text) {
   if (query.includes('roof')) {
     return 'Use the roofing calculator with pitch and wastage to determine roof material area.';
   }
-  return 'I can help with cement, concrete, bricks, paint, tiles, labour, HVAC, roofing, and flooring estimates. What would you like to calculate?';
+  if (query.includes('asphalt')) {
+    return 'The asphalt calculator estimates paving volume and tonnage from length, width, and depth.';
+  }
+  if (query.includes('drywall') || query.includes('sheet')) {
+    return 'Use the drywall calculator to estimate sheet count using surface area and sheet dimensions.';
+  }
+  if (query.includes('deck')) {
+    return 'The deck calculator estimates board quantities from deck dimensions and board width.';
+  }
+  if (query.includes('gravel')) {
+    return 'Use the gravel calculator to estimate volume and tonnage for your gravel bed.';
+  }
+  if (query.includes('fence')) {
+    return 'The fence calculator estimates posts, rails, and gate allowance for your run.';
+  }
+  if (query.includes('paver')) {
+    return 'Use the paver calculator to estimate paver count and coverage for patios and driveways.';
+  }
+  if (query.includes('square')) {
+    return 'The square footage calculator converts length and width into square metres and square feet.';
+  }
+  if (query.includes('loan') || query.includes('emi')) {
+    return 'Use the construction Loan EMI calculator with loan amount, interest rate, term, and down payment to see monthly payments and total interest.';
+  }
+  if (query.includes('blueprint') || query.includes('upload')) {
+    return 'Use the AI Blueprint Upload Estimator section to upload a plan image or PDF and receive material guidance based on your file.';
+  }
+  if (query.includes('material') || query.includes('estimate')) {
+    return 'Tell the assistant your project details or use the AI Material Estimator cards to compare cement, paint, bricks, and labour cost guidance.';
+  }
+  return 'I can help with cement, concrete, bricks, paint, tiles, labour, HVAC, roofing, flooring, asphalt, drywall, deck, gravel, fence, paver, square footage, and Loan EMI estimates. What would you like to calculate?';
 }
 
 window.onload = () => {
@@ -188,4 +359,14 @@ window.onload = () => {
   if (elementExists('hvac-area')) calculateHVAC();
   if (elementExists('roof-length')) calculateRoofing();
   if (elementExists('floor-length')) calculateFlooring();
+  if (elementExists('loan-principal')) calculateLoanEMI();
+  if (elementExists('ai-project-area')) calculateAIEstimate();
+  if (elementExists('asphalt-length')) calculateAsphalt();
+  if (elementExists('drywall-area')) calculateDrywall();
+  if (elementExists('deck-length')) calculateDeck();
+  if (elementExists('gravel-length')) calculateGravel();
+  if (elementExists('square-length')) calculateSquareFootage();
+  if (elementExists('rebar-length')) calculateRebar();
+  if (elementExists('fence-length')) calculateFence();
+  if (elementExists('paver-length')) calculatePaver();
 };

@@ -110,6 +110,15 @@
           <button class="tab-button" data-target="hvac">HVAC</button>
           <button class="tab-button" data-target="roofing">Roofing</button>
           <button class="tab-button" data-target="flooring">Flooring</button>
+          <button class="tab-button" data-target="loan-emi">Loan EMI</button>
+          <button class="tab-button" data-target="asphalt">Asphalt</button>
+          <button class="tab-button" data-target="drywall">Drywall</button>
+          <button class="tab-button" data-target="deck">Deck</button>
+          <button class="tab-button" data-target="gravel">Gravel</button>
+          <button class="tab-button" data-target="square-footage">Square Footage</button>
+          <button class="tab-button" data-target="rebar">Rebar</button>
+          <button class="tab-button" data-target="fence">Fence</button>
+          <button class="tab-button" data-target="paver">Paver</button>
         </div>
 
         <div class="calculator-panels">
@@ -306,6 +315,195 @@
             <button class="button button-primary" onclick="calculateFlooring()">Calculate</button>
             <div class="result-box" id="flooring-result"></div>
           </section>
+
+          <section class="calculator-panel" id="loan-emi">
+            <h3>Construction Loan EMI Calculator</h3>
+            <p>Plan construction financing with EMI, total payment, and interest estimates.</p>
+            <div class="calculator-grid">
+              <label>Loan Amount
+                <input type="number" id="loan-principal" min="0" step="1000" value="5000000" />
+              </label>
+              <label>Interest Rate (% per year)
+                <input type="number" id="loan-rate" min="0" step="0.01" value="8.5" />
+              </label>
+              <label>Term (years)
+                <input type="number" id="loan-term" min="1" step="1" value="15" />
+              </label>
+              <label>Down Payment
+                <input type="number" id="loan-down" min="0" step="1000" value="500000" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateLoanEMI()">Calculate</button>
+            <div class="result-box" id="loan-emi-result"></div>
+          </section>
+
+          <section class="calculator-panel" id="asphalt">
+            <h3>Asphalt Calculator</h3>
+            <p>Estimate asphalt volume and weight for paving and overlays.</p>
+            <div class="calculator-grid">
+              <label>Length (m)
+                <input type="number" id="asphalt-length" min="0" step="0.1" value="8" />
+              </label>
+              <label>Width (m)
+                <input type="number" id="asphalt-width" min="0" step="0.1" value="4" />
+              </label>
+              <label>Depth (cm)
+                <input type="number" id="asphalt-depth" min="0" step="0.1" value="5" />
+              </label>
+              <label>Density (t/m³)
+                <input type="number" id="asphalt-density" min="0" step="0.01" value="2.35" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateAsphalt()">Calculate</button>
+            <div class="result-box" id="asphalt-result"></div>
+          </section>
+
+          <section class="calculator-panel" id="drywall">
+            <h3>Drywall Calculator</h3>
+            <p>Estimate sheet count for walls and ceilings with waste allowance.</p>
+            <div class="calculator-grid">
+              <label>Surface Area (m²)
+                <input type="number" id="drywall-area" min="0" step="0.1" value="35" />
+              </label>
+              <label>Sheet Width (m)
+                <input type="number" id="drywall-width" min="0" step="0.01" value="1.2" />
+              </label>
+              <label>Sheet Height (m)
+                <input type="number" id="drywall-height" min="0" step="0.01" value="2.4" />
+              </label>
+              <label>Wastage (%)
+                <input type="number" id="drywall-wastage" min="0" step="1" value="10" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateDrywall()">Calculate</button>
+            <div class="result-box" id="drywall-result"></div>
+          </section>
+
+          <section class="calculator-panel" id="deck">
+            <h3>Deck Calculator</h3>
+            <p>Estimate deck board quantity for a simple timber deck.</p>
+            <div class="calculator-grid">
+              <label>Deck Length (m)
+                <input type="number" id="deck-length" min="0" step="0.1" value="5" />
+              </label>
+              <label>Deck Width (m)
+                <input type="number" id="deck-width" min="0" step="0.1" value="3" />
+              </label>
+              <label>Board Width (mm)
+                <input type="number" id="deck-board-width" min="0" step="1" value="140" />
+              </label>
+              <label>Gap (mm)
+                <input type="number" id="deck-gap" min="0" step="1" value="5" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateDeck()">Calculate</button>
+            <div class="result-box" id="deck-result"></div>
+          </section>
+
+          <section class="calculator-panel" id="gravel">
+            <h3>Gravel Calculator</h3>
+            <p>Estimate gravel volume and tonnage for driveways and beds.</p>
+            <div class="calculator-grid">
+              <label>Length (m)
+                <input type="number" id="gravel-length" min="0" step="0.1" value="6" />
+              </label>
+              <label>Width (m)
+                <input type="number" id="gravel-width" min="0" step="0.1" value="2.5" />
+              </label>
+              <label>Depth (cm)
+                <input type="number" id="gravel-depth" min="0" step="0.1" value="10" />
+              </label>
+              <label>Density (t/m³)
+                <input type="number" id="gravel-density" min="0" step="0.01" value="1.6" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateGravel()">Calculate</button>
+            <div class="result-box" id="gravel-result"></div>
+          </section>
+
+          <section class="calculator-panel" id="square-footage">
+            <h3>Square Footage Calculator</h3>
+            <p>Convert length and width into square metres and square feet.</p>
+            <div class="calculator-grid">
+              <label>Length (m)
+                <input type="number" id="square-length" min="0" step="0.1" value="7" />
+              </label>
+              <label>Width (m)
+                <input type="number" id="square-width" min="0" step="0.1" value="4" />
+              </label>
+              <label>Conversion factor
+                <input type="number" id="square-factor" min="0" step="0.01" value="10.7639" />
+              </label>
+              <label>Notes
+                <input type="text" id="square-notes" value="Standard floor area" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateSquareFootage()">Calculate</button>
+            <div class="result-box" id="square-footage-result"></div>
+          </section>
+
+          <section class="calculator-panel" id="rebar">
+            <h3>Rebar Calculator</h3>
+            <p>Estimate reinforcement length and weight for slab layouts.</p>
+            <div class="calculator-grid">
+              <label>Slab Length (m)
+                <input type="number" id="rebar-length" min="0" step="0.1" value="8" />
+              </label>
+              <label>Slab Width (m)
+                <input type="number" id="rebar-width" min="0" step="0.1" value="4" />
+              </label>
+              <label>Spacing (cm)
+                <input type="number" id="rebar-spacing" min="0" step="1" value="20" />
+              </label>
+              <label>Bar Diameter (mm)
+                <input type="number" id="rebar-diameter" min="0" step="1" value="12" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateRebar()">Calculate</button>
+            <div class="result-box" id="rebar-result"></div>
+          </section>
+
+          <section class="calculator-panel" id="fence">
+            <h3>Fence Calculator</h3>
+            <p>Estimate posts and gate openings for a perimeter fence.</p>
+            <div class="calculator-grid">
+              <label>Fence Length (m)
+                <input type="number" id="fence-length" min="0" step="0.1" value="25" />
+              </label>
+              <label>Post Spacing (m)
+                <input type="number" id="fence-spacing" min="0" step="0.1" value="2.4" />
+              </label>
+              <label>Gate Count
+                <input type="number" id="fence-gates" min="0" step="1" value="1" />
+              </label>
+              <label>Gate Width (m)
+                <input type="number" id="fence-gate-width" min="0" step="0.1" value="1" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculateFence()">Calculate</button>
+            <div class="result-box" id="fence-result"></div>
+          </section>
+
+          <section class="calculator-panel" id="paver">
+            <h3>Paver Calculator</h3>
+            <p>Estimate paver count and coverage for patios and driveways.</p>
+            <div class="calculator-grid">
+              <label>Area Length (m)
+                <input type="number" id="paver-length" min="0" step="0.1" value="5" />
+              </label>
+              <label>Area Width (m)
+                <input type="number" id="paver-width" min="0" step="0.1" value="4" />
+              </label>
+              <label>Paver Size (cm)
+                <input type="number" id="paver-size" min="0" step="1" value="20" />
+              </label>
+              <label>Wastage (%)
+                <input type="number" id="paver-wastage" min="0" step="1" value="10" />
+              </label>
+            </div>
+            <button class="button button-primary" onclick="calculatePaver()">Calculate</button>
+            <div class="result-box" id="paver-result"></div>
+          </section>
         </div>
       </div>
     </section>
@@ -319,13 +517,32 @@
         </div>
         <div class="chat-panel">
           <div id="chat-log" class="chat-log">
-            <div class="chat-message bot-message">Ask about cement, concrete, bricks, paint, tiles, labour, HVAC, roofing, or flooring.</div>
+            <div class="chat-message bot-message">Ask about cement, concrete, bricks, paint, tiles, labour, HVAC, roofing, flooring, loan EMI, or AI material estimates.</div>
           </div>
           <div class="chat-actions">
             <input id="chat-input" type="text" placeholder="Type your construction question..." />
             <button class="button button-primary" onclick="sendChat()">Send</button>
           </div>
           <div class="bot-note">AI integration is ready for OpenAI or custom backend setup.</div>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>AI Material Estimator</h3>
+            <p>Enter room size and project type to get estimated cement, paint, bricks, and labour cost recommendations.</p>
+            <a class="button button-secondary" href="/ai-estimator.html">Open AI Estimator</a>
+          </article>
+          <article class="feature-card">
+            <h3>Blueprint Upload Estimator</h3>
+            <p>Upload a plan or photo and let the AI suggest material quantities and jobsite needs.</p>
+            <a class="button button-secondary" href="/ai-estimator.html">Go to Blueprint Estimator</a>
+          </article>
+          <article class="feature-card">
+            <h3>Upload Your Blueprint</h3>
+            <p>Choose a plan image or PDF and press upload to receive a project-ready material estimate.</p>
+            <input id="blueprint-file" type="file" accept="image/*,.pdf" />
+            <button class="button button-secondary" onclick="uploadBlueprint()">Upload & estimate</button>
+            <div class="result-box" id="blueprint-result"></div>
+          </article>
         </div>
       </div>
     </section>
