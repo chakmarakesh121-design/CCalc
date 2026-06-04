@@ -142,7 +142,7 @@ body::before {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
+  grid-template-columns: 1.7fr 0.8fr;
   gap: 2.2rem;
   align-items: center;
 }
@@ -150,6 +150,16 @@ body::before {
 .hero-copy-block {
   display: grid;
   gap: 1.4rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-section h1,
+.section-header h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2.6rem, 2vw + 1.7rem, 4.2rem);
+  line-height: 1.02;
 }
 
 .eyebrow {
