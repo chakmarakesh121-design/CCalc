@@ -1,8 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +16,27 @@ const OPENAI_KEY = process.env.OPENAI_API_KEY;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname, { index: 'index.html', extensions: ['html'] }));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/:page', (req, res, next) => {
+  const { page } = req.params;
+
+  if (page.includes('.') || page === 'api') {
+    return next();
+  }
+
+  const pageFile = path.join(__dirname, `${page}.html`);
+
+  if (existsSync(pageFile)) {
+    return res.sendFile(pageFile);
+  }
+
+  return next();
+});
 
 app.post('/api/ai', async (req, res) => {
   const { question } = req.body;
@@ -61,6 +88,12 @@ app.post('/api/ai', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`AI backend running on http://localhost:${PORT}`);
-});
+export { app };
+
+const isMainModule = process.argv[1] && path.resolve(process.argv[1]) === __filename;
+
+if (isMainModule) {
+  app.listen(PORT, () => {
+    console.log(`AI backend running on http://localhost:${PORT}`);
+  });
+}
