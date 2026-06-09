@@ -516,7 +516,7 @@ body::before {
   word-break: break-word;
 }
 
-input, select {
+input, select, textarea {
   width: 100%;
   border-radius: 1.1rem;
   border: 1px solid rgba(255,255,255,0.1);
@@ -527,10 +527,29 @@ input, select {
 }
 
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   outline: none;
   border-color: rgba(91, 140, 255, 0.75);
   background: rgba(255,255,255,0.08);
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 8.5rem;
 }
 
 button.button {
