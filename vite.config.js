@@ -26,7 +26,9 @@ export default defineConfig({
         rebar: resolve(__dirname, 'rebar.html'),
         roofing: resolve(__dirname, 'roofing.html'),
         squareFootage: resolve(__dirname, 'square-footage.html'),
-        tiles: resolve(__dirname, 'tiles.html')
+        tiles: resolve(__dirname, 'tiles.html'),
+about: resolve(__dirname, 'about.html'),
+terms: resolve(__dirname, 'terms.html')
       }
     }
   },
